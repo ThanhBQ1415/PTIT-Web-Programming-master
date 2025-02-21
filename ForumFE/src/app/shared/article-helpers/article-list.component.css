@@ -1,0 +1,24 @@
+.page-link {
+  cursor: pointer;
+}
+
+.status {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+  min-width: 86px;
+}
+
+.isOpen {
+  background-color: #28a646;
+}
+
+.isClose {
+  background-color: #7142c2;
+}

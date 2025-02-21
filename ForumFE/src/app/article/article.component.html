@@ -1,0 +1,130 @@
+<div class="article-page">
+  <div class="banner">
+    <div class="container">
+      <h1>{{ post.title }}</h1>
+
+      <app-article-meta [post]="post">
+        <span [hidden]="!canModify">
+          <a
+            class="btn btn-sm btn-outline-secondary"
+            [routerLink]="['/editor', post.id]"
+          >
+            <i class="ion-edit"></i> Sửa câu hỏi
+          </a>
+
+          <button
+            class="btn btn-sm btn-outline-danger"
+            [ngClass]="{ disabled: isDeleting }"
+            (click)="deleteArticle()"
+          >
+            <i class="ion-trash-a"></i> Xóa câu hỏi
+          </button>
+        </span>
+
+        <!-- <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="post.username"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <app-favorite-button
+            [article]="post"
+            (toggle)="onToggleFavorite($event)">
+            {{ post.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ post.favoritesCount }})</span>
+          </app-favorite-button>
+        </span> -->
+      </app-article-meta>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row article-content">
+      <div class="col-md-12">
+        <div [innerHTML]="post.body | markdown"></div>
+
+        <ul class="tag-list">
+          <li
+            *ngFor="let tag of post.tags"
+            class="tag-default tag-pill tag-outline"
+          >
+            {{ tag.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="article-actions">
+      <app-article-meta [post]="post">
+        <span [hidden]="!canModify">
+          <a
+            class="btn btn-sm btn-outline-secondary"
+            [routerLink]="['/editor', post.id]"
+          >
+            <i class="ion-edit"></i> Sửa câu hỏi
+          </a>
+
+          <button
+            class="btn btn-sm btn-outline-danger"
+            [ngClass]="{ disabled: isDeleting }"
+            (click)="deleteArticle()"
+          >
+            <i class="ion-trash-a"></i> Xóa câu hỏi
+          </button>
+        </span>
+
+        <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="post.id"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <!-- <app-favorite-button
+            [article]="article"
+            (toggle)="onToggleFavorite($event)">
+            {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
+          </app-favorite-button> -->
+        </span>
+      </app-article-meta>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 offset-md-2">
+        <div *appShowAuthed="true">
+          <!-- <app-list-errors [errors]="commentFormErrors"></app-list-errors> -->
+          <form [formGroup]="commentForm" class="card comment-form" (ngSubmit)="addComment()">
+            <fieldset [disabled]="isSubmitting">
+              <div class="card-block">
+                <textarea
+                  class="form-control"
+                  placeholder="Viết bình luận..."
+                  rows="3"
+                  formControlName="body"
+                ></textarea>
+              </div>
+              <div class="card-footer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/1024px-Avatar_icon_green.svg.png" class="comment-author-img" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                  Đăng bình luận
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div *appShowAuthed="false">
+          <a [routerLink]="['/login']">Đăng nhập</a> hoặc
+          <a [routerLink]="['/register']">đăng kí</a> để tham gia thảo luận về câu hỏi này.
+        </div>
+
+        <app-article-comment
+          *ngFor="let comment of comments"
+          [comment]="comment"
+          (deleteComment)="onDeleteComment(comment)"
+        >
+        </app-article-comment>
+      </div>
+    </div>
+  </div>
+</div>

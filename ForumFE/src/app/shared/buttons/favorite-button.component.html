@@ -1,0 +1,12 @@
+<button
+  class="btn btn-sm"
+  [ngClass]="{
+    disabled: isSubmitting,
+    'btn-outline-primary': !post.upVote,
+    'btn-primary': post.upVote
+  }"
+  (click)="toggleFavorite()"
+  onclick="this.blur()"
+>
+  <i class="ion-chevron-up"></i> <ng-content></ng-content>
+</button>

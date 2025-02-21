@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-block">
+    <div style="float: right">
+      <div>
+        <button
+          class="btn btn-sm"
+          [ngClass]="{
+            disabled: isUpVote,
+            'btn-outline-primary': !comment.upVote,
+            'btn-primary': comment.upVote
+          }"
+          (click)="toggleUpVote()"
+          onclick="this.blur()"
+        >
+          <i class="ion-chevron-up"></i> {{ upVote }}
+        </button>
+      </div>
+      &nbsp;
+      <div>
+        <button
+          class="btn btn-sm"
+          style="margin-bottom: 5px"
+          [ngClass]="{
+            disabled: isDownVote,
+            'btn-outline-primary': !comment.downVote,
+            'btn-primary': comment.downVote
+          }"
+          (click)="toggleDownVote()"
+          onclick="this.blur()"
+        >
+          <i class="ion-chevron-down"></i> {{ downVote }}
+        </button>
+      </div>
+    </div>
+    <p class="card-text">
+      {{ comment.body }}
+    </p>
+  </div>
+  <div class="card-footer">
+    <a class="comment-author" [routerLink]="['/profile', comment.userId]">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/1024px-Avatar_icon_green.svg.png"
+        class="comment-author-img"
+      />
+    </a>
+    &nbsp;
+    <a class="comment-author" [routerLink]="['/profile', comment.userId]">
+      {{ comment.username }}
+    </a>
+    <span class="date-posted">
+      {{ comment.createdAt | date: "dd/MM/yyyy" }} lúc
+      {{ comment.createdAt | date: "HH:mm" }}
+    </span>
+    <span class="mod-options" [hidden]="!canModify">
+      <i class="ion-trash-a" (click)="deleteClicked()"></i>
+    </span>
+  </div>
+</div>

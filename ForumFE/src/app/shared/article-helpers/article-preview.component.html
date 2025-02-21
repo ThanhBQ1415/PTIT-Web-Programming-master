@@ -1,0 +1,45 @@
+<div class="article-preview">
+  <app-article-meta [post]="post">
+    <div style="float: right">
+      <div>
+        <app-favorite-button
+          [post]="post"
+          (toggle)="onToggleUpVote($event)"
+          class="pull-xs-right"
+        >
+          {{ upVote }}
+        </app-favorite-button>
+      </div>
+      &nbsp;
+      <div>
+        <app-down-vote-button
+          [post]="post"
+          (toggle)="onToggleDownVote($event)"
+          class="pull-xs-right"
+        >
+          {{ downVote }}
+        </app-down-vote-button>
+      </div>
+    </div>
+  </app-article-meta>
+
+  <a [routerLink]="['/article', post.id]" class="preview-link">
+    <h1>
+      <button *ngIf="post.open" class="status isOpen">
+        <i class="ion-help-circled"></i>&nbsp;Đang mở
+      </button>
+      <button *ngIf="!post.open" class="status isClose">
+        <i class="ion-android-checkmark-circle"></i>&nbsp;Đã đóng</button
+      >{{ post.title }}
+    </h1>
+    <span>Xem thêm...</span>
+    <ul class="tag-list">
+      <li
+        class="tag-default tag-pill tag-outline"
+        *ngFor="let tag of post.tags"
+      >
+        {{ tag.name }}
+      </li>
+    </ul>
+  </a>
+</div>

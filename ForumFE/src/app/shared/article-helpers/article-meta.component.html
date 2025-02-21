@@ -1,0 +1,17 @@
+<div class="article-meta">
+  <a [routerLink]="['/profile', post.userId]">
+    <img (error)="$event.target.src = defaultImage" [src]="urlImg" />
+  </a>
+
+  <div class="info">
+    <a class="author"
+      [routerLink]="['/profile', post.userId]">
+      {{ post.username }}
+    </a>
+    <span class="date">
+      {{ post.createdAt | date: 'dd/MM/yyyy' }} lúc {{ post.createdAt | date: 'HH:mm' }} 
+    </span>
+  </div>
+
+  <ng-content></ng-content>
+</div>

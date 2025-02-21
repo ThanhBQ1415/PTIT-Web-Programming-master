@@ -1,0 +1,12 @@
+:focus,
+.focus-visible:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow:
+    0 0 0 .2rem #fff,
+    0 0 0 .35rem #069;
+}
+
+:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+  }

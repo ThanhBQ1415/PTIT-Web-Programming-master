@@ -1,0 +1,57 @@
+{
+  "name": "ang2-forum",
+  "version": "8.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --configuration production --base-href ./ ",
+    "test": "ng test",
+    "lint": "ng lint --force",
+    "e2e": "ng e2e"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^12.2.16",
+    "@angular/compiler": "^12.2.16",
+    "@angular/core": "^12.2.16",
+    "@angular/forms": "^12.2.16",
+    "@angular/platform-browser": "^12.2.16",
+    "@angular/platform-browser-dynamic": "^12.2.16",
+    "@angular/router": "^12.2.16",
+    "@sweetalert2/ngx-sweetalert2": "^11.0.0",
+    "marked": "^4.0.10",
+    "rxjs": "^6.5.5",
+    "sweetalert2": "^11.4.17",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~12.2.17",
+    "@angular/cli": "^12.2.17",
+    "@angular/compiler-cli": "^12.2.16",
+    "@types/marked": "^4.0.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "^6.3.16",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "pre-commit": "^1.2.2",
+    "protractor": "~7.0.0",
+    "ts-node": "^10.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.3.5"
+  },
+  "resolutions": {
+    "webpack": "^5.0.0"
+  }
+}
